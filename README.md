@@ -12,12 +12,13 @@ PostgreSQL এ Schema হলো ডেটাবেজের ভেতরে ফ�
 - লজিকালি অব্জেক্টসমূহ পৃথক করা।
 
 ```sql
-CREATE SCHEMA hr;
+CREATE SCHEMA research_lab;
 
-CREATE TABLE hr.employees (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  department TEXT
+CREATE TABLE research_lab.dna_samples (
+  sample_id SERIAL PRIMARY KEY,
+  species_id INT NOT NULL REFERENCES species(species_id),
+  collection_date DATE NOT NULL,
+  collected_by INT REFERENCES rangers(ranger_id),
 );
 ```
 
